@@ -3212,5 +3212,7 @@ import time
 #     elif os.path.isdir(p):
 #         print(f'{obj} - dir')
 
-print('Hello')
+# print('Hello')
+
+print("Вносим изменения")
 
