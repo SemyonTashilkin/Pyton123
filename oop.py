@@ -316,8 +316,7 @@
 # print(p1.get_coords())
 
 
-import math
-
+# import math
 
 # class Rectangle:
 #     def __init__(self, length=1, width=1):
@@ -361,3 +360,285 @@ import math
 # print('Гипотенуза', round(rec1.hypo(), 2))
 # rec1.get_figure()
 
+####################### Занятие 16.12.2021
+
+# class Point:
+#     __slots__ = ["__x", "__y"]
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 1
+# print(p1.z)
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def __set_coords_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     def __get_coords_x(self):
+#         return self.__x
+#
+#     def __del_coords_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     coordX = property(__get_coords_x, __set_coords_x, __del_coords_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.coordX = 100
+# print(p1.coordX)
+# del p1.coordX
+# p1.coordX = 7
+# print(p1.coordX)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     @property
+#     def coords_x(self):
+#         return self.__x
+#
+#     @coords_x.setter
+#     def coords_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     @coords_x.deleter
+#     def coords_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     # coordX = property(__get_coords_x, __set_coords_x, __del_coords_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.coord_x = 100
+# print(p1.coord_x)
+# del p1.coord_x
+# p1.coord_x = 7
+# print(p1.coord_x)
+# print(p1.__dict__)
+
+# Задача 1
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами")
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#
+# w = KgToPounds(12)
+# print(w.to_pounds())
+# w.kg = 41
+# print(w.to_pounds())
+# w.kg = "10"
+# print(w.to_pounds())
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     # @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     get_count = staticmethod(get_count)
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+#
+# print(Point.get_count())
+# print(p1.get_count())
+
+# Задача 2
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x -1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+# q = Change()
+# print(q.inc(5), q.dec(5))
+
+# Задача 3
+
+# class Numbers:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         if a > b and a > c and a > d:
+#             return a
+#         elif b > a and b > c and b > d:
+#             return b
+#         elif c > a and c > b and c > d:
+#             return c
+#         else:
+#             return d
+#
+#     @staticmethod
+#     def min(a, b, c, d):
+#         if a < b and a < c and a < d:
+#             return a
+#         elif b < a and b < c and b < d:
+#             return b
+#         elif c < a and c < b and c < d:
+#             return c
+#         else:
+#             return d
+#
+#     @staticmethod
+#     def sred(a, b, c, d):
+#         return (a + b + c + d) / 4
+#
+#     @staticmethod
+#     def factorial(a):
+#         fac = 1
+#         for i in range(1, a + 1):
+#             fac *= i
+#         return
+#
+#
+# print(Numbers.max(3, 5, 7, 9))
+# print(Numbers.min(3, 5, 7, 9))
+# print(Numbers.sred(3, 5, 7, 9))
+
+
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     @classmethod
+#     def from_string(cls, date_as_string):
+#         day, month, year = map(int, date_as_string.split("."))
+#         date1 = cls (day, month, year)
+#         return date1
+#
+#     @staticmethod
+#     def is_date_valid(date_as_string):
+#         if date_as_string.count (".") == 2:
+#             day, month, year = map(int, date_as_string.split("."))
+#             return day <= 31 and month <=12 and year <= 3999
+#
+#     def string_to_db(self):
+#         return f'{self.year} - {self.month} - {self.day}'
+
+
+# d = "16.12.2021"
+# day, month, year = map(int, d.split("."))
+# print(day, month, year)
+# d = Date()
+# date = d.from_string("16.12.2021")
+# print(date.string_to_db())
+#
+# d1 = Date()
+# date1 = d1.from_string("09.09.2021")
+# print(date1.string_to_db())
+#
+# date2 = Date.from_string("15.10.2021")
+# print(date2.string_to_db())
+
+# dates = [
+#     '30.12.2021',
+#     '30-12-2021',
+#     '01.01.2021',
+#     '12.31.2020'
+# ]
+# for d in dates:
+#     if Date.is_date_valid(d):
+#         date = Date.from_string(d)
+#         db = date.string_to_db()
+#         print(db)
+#     else:
+#         print('Неправильная дата или формат строки с датой')
+
+
+# Задача
+
+import math
+
+
+class SquareFigure:
+    count = 0
+
+    @staticmethod
+    def formula_Gerona(a, b, c):
+        SquareFigure.count += 1
+        p = (a + b + c) / 2
+        return math.sqrt(p * (p - a) * (p - b) * (p - c))
+
+    @staticmethod
+    def OsnVys(a, h):
+        SquareFigure.count += 1
+        return 0.5 * h * a
+
+    @staticmethod
+    def SquareKv(a):
+        SquareFigure.count += 1
+        return a ** 2
+
+    @staticmethod
+    def SquarePr(a, b):
+        SquareFigure.count += 1
+        return a * b
+
+
+print(SquareFigure.formula_Gerona(3, 4, 5))
+print(SquareFigure.OsnVys(6, 7))
+print(SquareFigure.SquareKv(7))
+print(SquareFigure.SquarePr(2, 6))
+try_t = SquareFigure()
+print(try_t.formula_Gerona(1, 2, 3))
+print(SquareFigure.count)
