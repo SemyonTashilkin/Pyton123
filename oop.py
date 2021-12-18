@@ -642,3 +642,6 @@ print(SquareFigure.SquarePr(2, 6))
 try_t = SquareFigure()
 print(try_t.formula_Gerona(1, 2, 3))
 print(SquareFigure.count)
+
+
+print("Тест")
