@@ -645,3 +645,5 @@ print(SquareFigure.count)
 
 
 print("Тест")
+
+
