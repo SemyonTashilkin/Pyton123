@@ -1,1 +1,1 @@
-print('GitHub')
+print('Строка домашней работы в GitHub')
