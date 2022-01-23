@@ -1843,6 +1843,7 @@
 # # print("c1 *= c2: " + c1.get_format_time())
 # # c1 //= c2
 # # print("c1 //= c2: " + c1.get_format_time())
+
 #
 # if c1 == c2:
 #     print("Время одинаковое")
