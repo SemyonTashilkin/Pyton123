@@ -1901,113 +1901,113 @@
 #         p2.calc()
 
 
-class Point3D:
-    CH = "Координата должна быть числом"
-    RIGHT = "Правый операнд должен быть типом Point3D"
-
-    def __init__(self, x=0, y=0, z=0):
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def __str__(self):
-        return f"{self.x}, {self.y}, {self.z}"
-
-    @staticmethod
-    def __check_value(v):
-        return isinstance(v, int) or isinstance(v, float)
-
-    @staticmethod
-    def __check0(exemplar):
-        if exemplar.x == 0 or exemplar.y == 0 or exemplar.z == 0:
-            pass
-
-    @property
-    def x(self):
-        return self.__x
-
-    @x.setter
-    def x(self, value):
-        if self.__check_value(value):
-            self.__x = value
-        else:
-            print(self.CH)
-
-    @property
-    def y(self):
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        if self.__check_value(value):
-            self.__y = value
-        else:
-            print(self.CH)
-
-    @property
-    def z(self):
-        return self.__z
-
-    @z.setter
-    def z(self, value):
-        if self.__check_value(value):
-            self.__z = value
-        else:
-            print(self.CH)
-
-    def __add__(self, other):
-        if not isinstance(other, Point3D):
-            raise ValueError(self.RIGHT)
-        else:
-            return Point3D(self.__x + other.x, self.__y + other.y, self.__z + other.z)
-
-    def __sub__(self, other):
-        if not isinstance(other, Point3D):
-            raise ValueError(self.RIGHT)
-        else:
-            return Point3D(self.__x - other.x, self.__y - other.y, self.__z - other.z)
-
-    def __mul__(self, other):
-        if not isinstance(other, Point3D):
-            raise ValueError(self.RIGHT)
-        else:
-            return Point3D(self.__x * other.x, self.__y * other.y, self.__z * other.z)
-
-    def __truediv__(self, other):
-        if not isinstance(other, Point3D):
-            raise ValueError(self.RIGHT)
-        self.__check0(other)
-        return Point3D(self.__x / other.x, self.__y / other.y, self.__z / other.z)
-
-    def __eq__(self, other):
-        if not isinstance(other, Point3D):
-            raise ValueError(self.RIGHT)
-        return self.__x == other.x and self.__y == other.y and self.__z == other.z
-
-    def __getitem__(self, item):
-        if not isinstance(item, str):
-            raise ValueError("Ключ должен быть строкой")
-        elif item == "x":
-            return self.__x
-        elif item == "y":
-            return self.__y
-        elif item == "z":
-            return self.__z
-        else:
-            print("Неверное значение ключа")
-
-    def __setitem__(self, key, value):
-        if not isinstance(key, str):
-            raise ValueError("Ключ должен быть строкой")
-        if self.__check_value(value):
-            if key == 'x':
-                self.__x = value
-            elif key == 'y':
-                self.__y = value
-            elif key == 'z':
-                self.__z = value
-        else:
-            print("Координыты должны быть числами")
+# class Point3D:
+#     CH = "Координата должна быть числом"
+#     RIGHT = "Правый операнд должен быть типом Point3D"
+#
+#     def __init__(self, x=0, y=0, z=0):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#     def __str__(self):
+#         return f"{self.x}, {self.y}, {self.z}"
+#
+#     @staticmethod
+#     def __check_value(v):
+#         return isinstance(v, int) or isinstance(v, float)
+#
+#     @staticmethod
+#     def __check0(exemplar):
+#         if exemplar.x == 0 or exemplar.y == 0 or exemplar.z == 0:
+#             pass
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, value):
+#         if self.__check_value(value):
+#             self.__x = value
+#         else:
+#             print(self.CH)
+#
+#     @property
+#     def y(self):
+#         return self.__y
+#
+#     @y.setter
+#     def y(self, value):
+#         if self.__check_value(value):
+#             self.__y = value
+#         else:
+#             print(self.CH)
+#
+#     @property
+#     def z(self):
+#         return self.__z
+#
+#     @z.setter
+#     def z(self, value):
+#         if self.__check_value(value):
+#             self.__z = value
+#         else:
+#             print(self.CH)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Point3D):
+#             raise ValueError(self.RIGHT)
+#         else:
+#             return Point3D(self.__x + other.x, self.__y + other.y, self.__z + other.z)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Point3D):
+#             raise ValueError(self.RIGHT)
+#         else:
+#             return Point3D(self.__x - other.x, self.__y - other.y, self.__z - other.z)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Point3D):
+#             raise ValueError(self.RIGHT)
+#         else:
+#             return Point3D(self.__x * other.x, self.__y * other.y, self.__z * other.z)
+#
+#     def __truediv__(self, other):
+#         if not isinstance(other, Point3D):
+#             raise ValueError(self.RIGHT)
+#         self.__check0(other)
+#         return Point3D(self.__x / other.x, self.__y / other.y, self.__z / other.z)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Point3D):
+#             raise ValueError(self.RIGHT)
+#         return self.__x == other.x and self.__y == other.y and self.__z == other.z
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         elif item == "x":
+#             return self.__x
+#         elif item == "y":
+#             return self.__y
+#         elif item == "z":
+#             return self.__z
+#         else:
+#             print("Неверное значение ключа")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if self.__check_value(value):
+#             if key == 'x':
+#                 self.__x = value
+#             elif key == 'y':
+#                 self.__y = value
+#             elif key == 'z':
+#                 self.__z = value
+#         else:
+#             print("Координыты должны быть числами")
 
 
 # pt = Point3D(12, 15, 18)
@@ -2121,16 +2121,488 @@ class Point3D:
 #     animal.make_sound()
 
 
-class Cat:
-    def __init__(self, name):
-        self.name = name
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+#
+# cat = Cat("Пушок")
+# print
 
-    def __repr__(self):
-        return f"{self.__class__}: {self.name}"
+# 25.01.2022 =============================================
 
-    def __str__(self):
-        return f"{self.name}"
+# class Human:
+#     def __init__(self, last_name, first_name, age):
+#         self.last_name = last_name
+#         self.first_name = first_name
+#         self.age = age
+#
+#     def info(self):
+#         print(f'{self.last_name} {self.first_name} {self.age}', end=" ")
+#
+#
+# class Student(Human):
+#     def __init__(self, last_name, first_name, age, spec, group, rating):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = spec
+#         self.group = group
+#         self.rating = rating
+#
+#     def info(self):
+#         super().info()
+#         print(f'{self.speciality} {self.group} {self.rating}')
+#
+#
+# class Teacher(Human):
+#     def __init__(self, last_name, first_name, age, spec, experience):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = spec
+#         self.experience = experience
+#
+#     def info(self):
+#         super().info()
+#         print(f'{self.speciality} {self.experience}', end=" ")
+#
+#
+# class Graduate(Student):
+#     def __init__(self, last_name, first_name, age, spec, group, rating, topic):
+#         super().__init__(spec, group, rating, last_name, first_name, age)
+#         self.topic = topic
+#
+#     def info(self):
+#         super().info()
+#         print(f'{self.topic}', end=" ")
+#
+#
+# group = [
+#     Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+#     # Graduate("Шугани", "Сергей", 15, "PD_011", 5, "Защита персональных данных"),
+#     Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+# ]
+# for i in group:
+#     i.info()
 
 
-cat = Cat("Пушок")
-print(cat)
+# class Point:
+#     def __init__(self, *args):
+#         self.__coords = args
+#
+#     def __len__(self):
+#         return len(self.__coords)
+#
+#     def __abs__(self):
+#         return list(map(abs, self.__coords))
+#
+#
+# p = Point(6, 9, 8)
+# print(len(p))
+# print(abs(p))
+
+# import math
+#
+#
+# class Point:
+#     __slots__ = ('x', 'y', '__length')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = math.sqrt(x * x + y * y)
+#
+#     @property
+#     def length(self):
+#         return self.__length
+#
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+#
+#
+# p = Point(5, 9)
+# print(p.length)
+# # p.z = 6
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point2D:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# pt = Point(1, 2)
+# pt2 = Point2D(1, 2)
+# print("pt =", pt.__sizeof__())
+# print("pt2 =", pt2.__sizeof__() + pt2.__dict__.__sizeof__())
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     __slots__ = 'z'
+#
+#
+# pt3 = Point3D(10, 20)
+# pt3.z = 30
+# print(pt3.z)
+
+
+# class Counter:
+#     def __init__(self):
+#         self.__counter = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__counter += 1
+#         print(self.__counter)
+#         return self.__counter
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+# c1()
+# c1()
+#
+# c2 = Counter()
+# c2()
+# c2()
+# c2()
+
+
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+#
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0], str):
+#             raise ValueError("аргумент должен быть строкой")
+#         return args[0].strip(self.__chars)
+#
+#
+# s1 = StripChars("?:!.; ")
+# print(s1("  ?Hello World! "))
+
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self):
+#         print("перед вызовом функции")
+#         self.func()
+#         print("после вызова функции")
+#
+#
+# @MyDecorator
+# def function():
+#     print("func")
+#
+#
+# function()
+
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         print("перед вызовом функции")
+#         res = self.func(a, b)
+#         print("после вызова функции")
+#         return res
+#
+#
+# @MyDecorator
+# def function(a, b):
+#     return a * b
+#
+#
+# print(function(85, 5))
+
+
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         res = self.func(a, b)
+#         return res ** 2
+#
+#
+# @Power
+# def function(a, b):
+#     return a * b
+#
+#
+# print(function(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, func):
+#         def wrap(a, b):
+#             print("перед вызовом функции")
+#             print(self.name)
+#             func(a, b)
+#             print("после вызова функции")
+#
+#         return wrap
+#
+#
+# @MyDecorator("test2")
+# def function(a, b):
+#     print(a, b)
+#
+#
+# print(function(85, 5))
+
+
+# 27.01.2022 ==========================
+
+# class Power:
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, func):
+#         def wrapper(a, b):
+#             res = func(a, b)
+#             return res ** self.arg
+#
+#         return wrapper
+#
+#
+# @Power(3)
+# def multuple(a, b):
+#     return a * b
+#
+#
+# print("Результат:", multuple(2, 2))
+
+
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     def dec(fn):
+#         def wrap(*args, **kwargs):
+#             print("*" * 20)
+#             fn(*args, **kwargs)
+#             print("*" * 20)
+#
+#         return wrap
+#
+#     @dec
+#     def info(self):
+#         print(f'{self.name} {self.surname}')
+#
+#
+# p1 = Person("Виталий", "Карасев")
+# p1.info()
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def doubler(self, value):
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Init ActualClass")
+#
+#     def quad(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass()
+# print(obj.quad(4))
+# print(obj.doubler(4))
+
+
+# class Message:
+#     _REGISTERY = {}
+#
+#     def __init__(self, text):
+#         self.text = text
+#
+#     @classmethod
+#     def register(cls, name):
+#         def decorator(klass):
+#             cls._REGISTERY[name] = klass
+#             return klass
+#
+#         return decorator
+#
+#     @classmethod
+#     def create(cls, message_type, text):
+#         klass = cls._REGISTERY.get(message_type)
+#         if klass is None:
+#             raise ValueError("Такого мессенджера нет.")
+#         print(text, end=" ")
+#         return klass(text)
+#
+#
+# @Message.register('Telegram')
+# class TelegramMessage(Message):
+#     def send(self):
+#         print("(Telegram)")
+#
+#
+# @Message.register('WhatsApp')
+# class WhatsAppMessage(Message):
+#     def send(self):
+#         print("(WhatsApp)")
+#
+#
+# m1 = Message.create("Telegram", "text")
+# m1.send()
+# m2 = Message.create('WhatsApp', "new text")
+# m2.send()
+# m3 = Message.create("Telegram", "text text")
+# m3.send()
+
+
+# class Person:
+#     def __init__(self, name, surname):
+#         self.__name = name
+#         self.__surname = surname
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, value):
+#         self.__name = value
+#
+#     @property
+#     def surname(self):
+#         return self.__surname
+#
+#     @surname.setter
+#     def surname(self, value):
+#         self.__surname = value
+#
+#
+# p = Person("Иван", "Николаев")
+
+# class String:
+#     def __init__(self, value):
+#         if value:
+#             self.set(value)
+#
+#     def set(self, value):
+#         self.__value = value
+#
+#     def get(self):
+#         return self.__value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+#
+#
+# p = Person("Иван", "Николаев")
+# print(p.name.get())
+# p.name.set('Игорь')
+# print(p.name.get())
+
+
+# class ValidString:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f'{self.__name} должно быть строкой')
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.__name = name
+#         self.__surname = surname
+#
+#
+# p = Person("Иван", "Николаев")
+# print(p.name)
+# print(p.surname)
+
+
+# class NonNegative:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError("Значение должно быть положительным")
+#         instance.__dict__[self.__name] = value
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#
+# class Order:
+#     price = NonNegative()
+#     quantity = NonNegative()
+#
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+#
+#     def total(self):
+#         return self.price * self.quantity
+#
+#
+# apple = Order('apple', 5, 10)
+# print(apple.total())
+
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+class MyList(list):
+    def get_length(self):
+        return len(self)
+
+lst = MyList()
+lst.append(1)
+lst.append(2)
+lst[0] = 3
+print(lst, lst.get_length())
+
