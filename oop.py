@@ -2014,6 +2014,25 @@
 # pt2 = Point3D(6, 3, 9)
 # print(f"Координаты 1-й точки: {pt}")
 # print(f"Координаты 2-й точки: {pt2}")
+
+# class Point3D:
+# def __init__(self, x, y, z):
+# self.xyz = list()
+# self.xyz.append(x)
+# self.xyz.append(y)
+# self.xyz.append(z)
+#
+# def set_x(self, x):
+# self.xyz[0] = x
+#
+# def set_y(self, y):
+# self.xyz[1] = y
+#
+# def set_z(self, z):
+# self.xyz[2] = z
+#
+# def get(self):
+# return self.xyz
 #
 # pt3 = pt + pt2
 # print(f'Сложение координат: ({pt3})')
@@ -2596,13 +2615,146 @@
 # print(type(a))
 # print(type(int))
 
-class MyList(list):
-    def get_length(self):
-        return len(self)
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+#
+# lst = MyList()
+# lst.append(1)
+# lst.append(2)
+# lst[0] = 3
+# print(lst, lst.get_length())
 
-lst = MyList()
-lst.append(1)
-lst.append(2)
-lst[0] = 3
-print(lst, lst.get_length())
+# ==================================================
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import rect, sq, trian
+#
+# r1 = rect.Rectangle(1, 2)
+# r2 = rect.Rectangle(3, 4)
+#
+# s1 = sq.Square(10)
+# s2 = sq.Square(20)
+#
+# t1 = trian.Triangle(1, 2, 3)
+# t2 = trian.Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.get_perimetr())
+
+
+# from car import electrocar
+#
+# e = electrocar.Electrocar("Tesla", "T", 2018, 99000)
+# e.show_car()
+# e.description_battery()
+
+
+# circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6), circle.Circle(8), circle.Circle(1)]
+# rects = [rectangle.Rectangle(3, 7), rectangle.Rectangle(2, 7), rectangle.Rectangle(19, 12)]
+# cylinders = [cylinder.Cylinder(4, 7), cylinder.Cylinder(2, 5), cylinder.Cylinder(9, 3), cylinder.Cylinder(5, 5)]
+# circle_max_s = max(circles, key=lambda c: c.get_circle_square())
+# rect_min_p = min(rects, key=lambda r: r.get_rect_perimeter())
+# cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
+# cylinders_v_avg = sum(cylinders_v) / len(cylinders_v)
+# print('*' * 50)
+# print('Окружность с наибольшей площадью:', end=' ')
+# circle_max_s.print_circle()
+# print('Прямоугольник с наименьшим периметром:', end=' ')
+# rect_min_p.print_rect()
+# print(f'Средний объем всех цилиндров: {cylinders_v_avg:.2f}')
+
+# import pickle
+
+# filename = 'basket.txt'
+#
+# shop_list = {
+#     'фрукты': ['фрукты', 'манго'],
+#     'овощи': ['морковь'],
+#     'бюджет': 1000
+# }
+#
+# with open(filename, 'wb') as fh:
+#     pickle.dump(shop_list, fh)
+#
+# with open(filename, 'rb') as fh:
+#     print(pickle.load(fh))
+
+# class Test:
+#     a_number = 35
+#     a_string = 'привет'
+#     a_list = [1, 2, 3]
+#     a_tuple = (22, 23)
+#     a_dict = {"first": "a", "secont": 2, "third": [1, 2, 3]}
+#
+#     def __str__(self):
+#         return f'Число: {Test.a_number}\nСтрока: {Test.a_string}\nСписок: {Test.a_list}\nКортеж: {Test.a_tuple}\nСловарь: {Test.a_list}'
+#
+#
+# obj = Test()
+#
+# my_obj = pickle.dumps(obj)
+# print(f'Сериализация в строку:\n{my_obj}\n')
+#
+# l_obj = pickle.loads(my_obj)
+# print(f'Десериализация в строку:\n{l_obj}\n')
+
+# class TextReader:
+#     def __init__(self, filename):
+#         self.filename = filename
+#         self.file = open(filename, encoding="utf-8")
+#         self.count = 0
+#
+#     def red_line(self):
+#         self.count += 1
+#         line = self.file.readline()
+#         if not line:
+#             return None
+#         if line.endswith('\n'):
+#             line = line[:-1]
+#         return f'{self.count}: {line}'
+#
+#     def __getstate__(self):
+#         state = self.__dict__.copy()
+#         del state['file']
+#         return state
+#
+#     def __setstate__(self, state):
+#         self.__dict__.update(state)
+#         file = open(self.filename, encoding="utf-8")
+#         for i in range(self.count):
+#             file.readline()
+#         self.file = file
+#
+#
+# reader = TextReader('hello.txt')
+# print(reader.red_line())
+# print(reader.red_line())
+#
+# new_reader = pickle.loads(pickle.dumps(reader))
+# print(new_reader.red_line())
+
+import json
+
+data = {
+    'firstname': 'Jane',
+    'lastName': 'Dho',
+    'hobbies': ['running', 'sky diving'],
+    'age': 5,
+    20 : 'one'
+}
+
+# with open('data_file.json', 'w') as fw:
+#     json.dump(data, fw)
+
+with open('data_file.json', 'r') as fw:
+    print(json.load(fw))
+
+
+
 
