@@ -2739,22 +2739,145 @@
 # new_reader = pickle.loads(pickle.dumps(reader))
 # print(new_reader.red_line())
 
-import json
-
-data = {
-    'firstname': 'Jane',
-    'lastName': 'Dho',
-    'hobbies': ['running', 'sky diving'],
-    'age': 5,
-    20 : 'one'
-}
-
-# with open('data_file.json', 'w') as fw:
-#     json.dump(data, fw)
-
-with open('data_file.json', 'r') as fw:
-    print(json.load(fw))
-
-
+# import json
+#
+# data = {
+#     'firstname': 'Jane',
+#     'lastName': 'Dho',
+#     'hobbies': ['running', 'sky diving'],
+#     'age': 5,
+#     20 : 'one'
+# }
+#
+# # with open('data_file.json', 'w') as fw:
+# #     json.dump(data, fw)
+#
+# with open('data_file.json', 'r') as fw:
+#     print(json.load(fw))
 
 
+# 08.02.2022
+
+# import json
+#
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         a = ''
+#         for i in self.marks:
+#             a += str(i) + ', '
+#         return f'Студент {self.name}: {a[:-2]}'
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     @classmethod
+#     def dump_to_json(cls, stud, filename):
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = []
+#
+#         data.append({"name": stud.name, "marks": stud.marks})
+#         with open(filename, "w") as f:
+#             json.dump(data, f, indent=2)
+#
+#     @classmethod
+#     def load_from_file(cls, filename):
+#         with open(filename, "r") as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         a = ''
+#         for i in self.students:
+#             a += str(i) + '\n'
+#         return f'Группа: {self.group}\n{a}'
+#
+#     def add_students(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @classmethod
+#     def change_group(cls, group1, group2, index):
+#         return group2.add_students(group1.remove_student(index))
+#
+#     @classmethod
+#     def dump_group(cls, file, group):
+#         with open(file, 'w') as f:
+#             stud_list = []
+#             for i in group.students:
+#                 stud_list.append([i.name], [i.marks])
+#             tmp = {'Student': stud_list}
+#             json.dump(tmp['Student'], f)
+#
+#
+# # st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+#
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+# st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+#
+# Student.dump_to_json(st1, 'student.json')
+# Student.load_from_file('student.json')
+#
+# sts = [st1, st2]
+# my_group = Group(sts, 'ГК Python')
+# print(my_group)
+# my_group.dump_group("group.json", my_group)
+# my_group.add_students(st3)
+# print(my_group)
+# my_group.remove_student(1)
+# print(my_group)
+#
+# group22 = [st2]
+# my_group2 = Group(group22, 'ГК Web')
+# Group.change_group(my_group, my_group2, 0)
+# print(my_group)
+# print(my_group2)
+
+from shapes import circle
+from shapes import rectangle
+from shapes import cylinder
+
+circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6), circle.Circle(8), circle.Circle(1)]
+rects = [rectangle.Rectangle(3, 7), rectangle.Rectangle(2, 7), rectangle.Rectangle(19, 12)]
+cylinders = [cylinder.Cylinder(4, 7), cylinder.Cylinder(2, 5), cylinder.Cylinder(9, 3), cylinder.Cylinder(5, 5)]
+circle_max_s = max(circles, key=lambda c: c.get_circle_square())
+rect_min_p = min(rects, key=lambda r: r.get_rect_perimeter())
+cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
+cylinders_v_avg = sum(cylinders_v) / len(cylinders_v)
+print('*' * 50)
+print('Окружность с наибольшей площадью:', end=' ')
+circle_max_s.print_circle()
+print('Прямоугольник с наименьшим периметром:', end=' ')
+rect_min_p.print_rect()
+print(f'Средний объем всех цилиндров: {cylinders_v_avg:.2f}')
